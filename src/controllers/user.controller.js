@@ -17,7 +17,7 @@ Router.post("/register",async(req,res)=>{
     res.send(createduser);
 }
     catch(error){
-        res.send({error:error.message});
+        return res.send({error:error.message});
     }
 })
 
@@ -32,7 +32,7 @@ Router.post("/login",async(req,res)=>{
     }
 
   if(password!==ispresent.password){
-    res.send("invalid password");
+    return res.send("invalid password");
   }
   const payload={userID:ispresent._id,role:ispresent.role}
   const token=jwt.sign(payload,"harry",
